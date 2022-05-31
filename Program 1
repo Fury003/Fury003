@@ -1,0 +1,41 @@
+print('Hello welcome to our financial program')
+playing = input('Do you want to play?\n')
+p=0
+
+if playing.lower() != 'yes':
+    quit()
+
+print("Okay! Let's play")
+
+#intrebarile
+#1
+da=input("Is you personal house a liability ar a asset\n").lower()
+if da == 'a liability':
+    print('Correct')
+    p+=1
+else:
+    print('Incorrect')
+#2
+da=input("When an index is decresing more than 20% is calld Bear or Bull?\n").lower()
+if da == 'bear':
+    print('Correct')
+    p+=1
+else:
+    print('Incorrect')
+#3
+da=input("Which is the safest index in a chrisis\n").lower()
+if da == 'the gold one':
+    print('Correct')
+    p+=1
+else:
+    print('Incorrect')
+#4
+da=input("What is the difference between an asset an a liability\n").lower()
+if da == 'an asset put money into your pocket while a liability take money from you pocket':
+    print('Correct')
+    p+=1
+else:
+    print('Incorrect')
+#rezultate
+print('Congratulations you answard correct at '+str(p)+' out of 4')
+print("Your score is " + str(p/4*100))
