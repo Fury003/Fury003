@@ -1,0 +1,30 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as ecc
+from selenium.webdriver.common.keys import Keys
+import time
+
+PATH = 'C:\Program Files (x86)\chromedriver.exe'
+driver = webdriver.Chrome(PATH)
+
+driver.get("https://rarbgmirror.org/torrents.php")
+print(driver.title)
+
+#vezi = driver.find_element_by_class_name("search")
+#id suggestion-search
+
+vezi = driver.find_element_by_id("searchinput")
+vezi.send_keys("Obi-Wan.Kenobi.S01")
+vezi.send_keys(Keys.RETURN)
+
+#s are doar clasa (anal tdlinkfull3) nush cum sa apasa
+try:
+    tot = WebDriverWait(driver,20).until(ecc.presence_of_element_located((By.__class__, 'lista2t')))
+#cu toate la rezulate e (lista2t)
+except:
+    driver.quit()
+print(tot.text)
+
+time.sleep(5)
+driver.close()
