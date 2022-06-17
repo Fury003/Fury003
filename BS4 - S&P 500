@@ -1,0 +1,10 @@
+from bs4 import BeautifulSoup
+import requests
+
+url = 'https://www.cnbc.com/quotes/.SPX'
+result = requests.get(url)
+doc = BeautifulSoup(result.text , "html.parser")
+
+percent = doc.find_all(text='%')
+parent = percent[0].parent
+print(parent)
