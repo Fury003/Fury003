@@ -1,0 +1,25 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as ecc
+from selenium.webdriver.common.keys import Keys
+import time
+
+PATH = 'C:\Program Files (x86)\chromedriver.exe'
+driver = webdriver.Chrome(PATH)
+
+driver.get("https://www.nyse.com/index")
+print("This is from " , driver.title)
+
+accept = driver.find_element_by_id("onetrust-accept-btn-handler")
+accept.click()
+accept.send_keys(Keys.RETURN)
+
+time.sleep(5)
+
+ca_sa = driver.find_element_by_class_name("h-8 w-8")
+ca_sa.click()
+ca_sa.send_keys(Keys.RETURN)
+
+time.sleep(5)
+driver.quit()
