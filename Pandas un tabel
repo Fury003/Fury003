@@ -1,0 +1,12 @@
+import pandas as pd
+
+data = {'Product name': ['Laptop', 'Desk', 'Table', 'Monitor', 'Desk chair'],
+        'Price': [3000, 1000, 50, 2000, 600],
+        '': ['lei' , 'lei' , 'lei' ,'lei' , 'lei']
+        }
+
+df = pd.DataFrame(data, index=['1','2','3','4','5'])
+
+print (df)
+#nu merge dataframul
+#Ce e CSV
