@@ -1,25 +1,26 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as ecc
-from selenium.webdriver.common.keys import Keys
+# Raw Packaged
+import pywhatkit
 import time
+import pandas as pd
 
-PATH = 'C:\Program Files (x86)\chromedriver.exe'
-driver = webdriver.Chrome(PATH)
+#Data Source
+import yfinance as yf
 
-driver.get("https://www.nyse.com/index")
-print("This is from " , driver.title)
+#searched index
+Tesla = yf.download(tickers='TSLA', period='5d', interval='5m')
 
-accept = driver.find_element_by_id("onetrust-accept-btn-handler")
-accept.click()
-accept.send_keys(Keys.RETURN)
+#incerc sa indexez(transform in lista/tuplu/set) ca sa pot sa pun highlighted
+print(type(Tesla))
 
-time.sleep(5)
+#wait time for debug
+#time.sleep(5)
 
-ca_sa = driver.find_element_by_class_name("h-8 w-8")
-ca_sa.click()
-ca_sa.send_keys(Keys.RETURN)
+#message itself
+#pywhatkit.sendwhatmsg("+40733835338" ,str(Tesla), 15 , 26 , 10 , True , 10)
 
-time.sleep(5)
-driver.quit()
+#incerc tabelul
+df = pd.DataFrame(Tesla, index=[list[1]])
+print(df)
+
+#E o clasa pandas deja dar eu daca scot pandas in import tot clasa pandas ramane
+#tot nu mi iese dataframul si incerc sa aflu val max  dar nu stiu cum s o apelez daca nu e in forma de baza sa zic asa
