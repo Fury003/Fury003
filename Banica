@@ -1,0 +1,18 @@
+# Raw Packaged
+import pywhatkit
+import time
+
+#Data Source
+import yfinance as yf
+
+#searched index
+Tesla = yf.download(tickers='TSLA', period='5d', interval='5m')
+
+#Print data
+mesaj= "Buna Banica asta e un program automat care iti arata datele din indexul Tesla\n"+str(Tesla) +"\nSa sugi pula.La multi ani te iubesc"
+
+#wait time for debug
+time.sleep(5)
+
+#message itself
+pywhatkit.sendwhatmsg("+40733835338" ,str(mesaj), 15 , 35 , 13 , True , 10)
