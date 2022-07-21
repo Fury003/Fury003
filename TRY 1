@@ -1,26 +1,32 @@
-# Raw Packaged
-import pywhatkit
-import time
+#Package
+from bs4 import BeautifulSoup
+import requests
 import pandas as pd
 
-#Data Source
-import yfinance as yf
+#Url-uri
+urls= ["https://www.bancatransilvania.ro/conturi-si-operatiuni/operatiuni/curs-valutar/curs-valutar-la-case-de-schimb" ,"https://ing.ro/persoane-fizice/curs-valutar" ,
+       'https://www.raiffeisen.ro/persoane-fizice/curs-valutar/' ,'https://www.brd.ro/curs-valutar-si-dobanzi-de-referinta','https://www.unicredit.ro/ro/institutional/Diverse/SchimbValutar.html',
+       'https://www.cec.ro/curs-valutar',]
 
-#searched index
-Tesla = yf.download(tickers='TSLA', period='5d', interval='5m')
+#Curs Transilvania
+url_tran =urls[0]
+codul = requests.get(url_tran).text
+doc = BeautifulSoup(codul, 'html.parser')
 
-#incerc sa indexez(transform in lista/tuplu/set) ca sa pot sa pun highlighted
-print(type(Tesla))
+#Tabel Tran
+div = doc.find(class_='bt-table bt-table-default bt-table-inverse')
+div1 =div.contents
 
-#wait time for debug
-#time.sleep(5)
+price = {}
 
-#message itself
-#pywhatkit.sendwhatmsg("+40733835338" ,str(Tesla), 15 , 26 , 10 , True , 10)
-
-#incerc tabelul
-df = pd.DataFrame(Tesla, index=[list[1]])
-print(df)
-
-#E o clasa pandas deja dar eu daca scot pandas in import tot clasa pandas ramane
-#tot nu mi iese dataframul si incerc sa aflu val max  dar nu stiu cum s o apelez daca nu e in forma de baza sa zic asa
+for tr in div1:
+       for td in tr.contends :
+              print(td)
+              print()
+print(list(div1[1].descendants))
+#tr = div.text
+#tr = pd.read_html(div) #sau dacă df e listă, vezi cu [0]
+#print(tr)
+#print(li[2].__dir__())
+#li.re
+#list.
